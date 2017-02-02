@@ -23,7 +23,7 @@ ifeq ($(CONFIG_CGMINER_AVALON6),y)
 	PKG_REV:=avalon4
 endif
 ifeq ($(CONFIG_CGMINER_AVALON7),y)
-	PKG_VERSION:=git-$(shell git ls-remote https://github.com/Canaan-Creative/cgminer master | cut -f1 | cut -c1-7)
+	PKG_VERSION:=git-$(shell git ls-remote https://github.com/caiqinghua/btminer master | cut -f1 | cut -c1-7)
 	PKG_REV:=master
 endif
 
@@ -32,7 +32,7 @@ PKG_INSTALL:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-$(PKG_REV).tar.bz2
 ifeq ($(CONFIG_CGMINER_AVALON4),y)
-	PKG_SOURCE_URL:=git://github.com/Canaan-Creative/cgminer.git
+	PKG_SOURCE_URL:=git://github.com/caiqinghua/btminer.git
 else
 	PKG_SOURCE_URL:=git://github.com/ckolivas/cgminer.git
 endif
@@ -40,12 +40,13 @@ ifeq ($(CONFIG_CGMINER_AVALON6),y)
 	PKG_SOURCE_URL:=git://github.com/Canaan-Creative/cgminer.git
 endif
 ifeq ($(CONFIG_CGMINER_AVALON7),y)
-	PKG_SOURCE_URL:=git://github.com/Canaan-Creative/cgminer.git
+	PKG_SOURCE_URL:=git://github.com/caiqinghua/btminer.git
 endif
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
 PKG_SOURCE_VERSION:=$(PKG_REV)
 
+PKG_CHECK_FORMAT_SECURITY:=0
 PKG_FIXUP:=autoreconf
 
 include $(INCLUDE_DIR)/package.mk
@@ -90,7 +91,7 @@ ifeq ($(CONFIG_CGMINER_AVALON6),y)
 	CONFIGURE_ARGS += --enable-avalon4
 endif
 ifeq ($(CONFIG_CGMINER_AVALON7),y)
-	CONFIGURE_ARGS += --enable-avalon7 CFLAGS=-DSTRATUM_USER_AGENT=\\\"a7\\\"
+	CONFIGURE_ARGS += --enable-bitmicro
 endif
 
 ifeq ($(CONFIG_TARGET_brcm2708_RaspberryPi),)
